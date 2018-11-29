@@ -62,7 +62,7 @@ static NSInteger rapidLevel;
 {
     if (!_timer) {
         self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
-        dispatch_source_set_timer(self.timer, dispatch_walltime(NULL, 0), 1.0/(rapidLevel*rapidLevel) * NSEC_PER_SEC, 0);
+        dispatch_source_set_timer(self.timer, dispatch_walltime(NULL, 0), 2.0/(rapidLevel*rapidLevel) * NSEC_PER_SEC, 0);
         dispatch_source_set_event_handler(self.timer, ^{
             if (self.nextSet.count == 0) {
                 [self preCreateBricks];
@@ -89,7 +89,7 @@ static NSInteger rapidLevel;
                 [self actualizeBricks];
                 [self createBricks];
                 if (![self canUpdateBricks:ZZBrickDirectionDown]) {
-                    dispatch_suspend(self.timer);
+                    [self dispatchSuspendTimer];
                     NSLog(@"game over...");
                     self.isGameOver = YES;
                     if (self.gameOverBlock) {
@@ -341,12 +341,14 @@ static NSInteger rapidLevel;
 
 - (void)downClick
 {
+    if (self.isGameOver || !self.isPlaying) return;
     rapidDown = 5;
 }
 
 - (void)reversalClick
 {
     if (self.isGameOver || !self.isPlaying) return;
+    if (self.tempSet.count == 0) return;
     dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
     ZZBrickConfig *config = self.tempSet.firstObject.config;
     NSInteger y = -5;

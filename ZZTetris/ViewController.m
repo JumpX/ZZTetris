@@ -55,34 +55,44 @@
     self.board = [[ZZTetrisBoard alloc] initWithFrame:CGRectMake(xy, xy, w, h)];
     [self.view addSubview:self.board];
     
-    CGFloat btnTop = self.board.bottom+xy/2.0;
+    CGFloat btnTop = self.board.bottom+realInt(1);
     CGFloat btnInterval = w/8.0;
-    CGFloat btnWidth = btnInterval*2;
+    CGFloat btnWidth = btnInterval*2+realInt(2);
     
     UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
-    left.frame = CGRectMake(xy, btnTop, btnWidth, btnWidth);
+    left.frame = CGRectMake(xy-realInt(1), btnTop-realInt(1), btnWidth, btnWidth);
     [left setImage:[UIImage imageNamed:@"zzleft"] forState:UIControlStateNormal];
+    [left setImageEdgeInsets:UIEdgeInsetsMake(realInt(1), realInt(1), realInt(1), realInt(1))];
     [left addTarget:self action:@selector(leftClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:left];
     
     UIButton *right = [UIButton buttonWithType:UIButtonTypeCustom];
-    right.frame = CGRectMake(xy+2*btnWidth, btnTop, btnWidth, btnWidth);
+    right.frame = CGRectMake(xy+2*btnWidth-realInt(3), btnTop-realInt(1), btnWidth, btnWidth);
     [right setImage:[UIImage imageNamed:@"zzright"] forState:UIControlStateNormal];
+    [right setImageEdgeInsets:UIEdgeInsetsMake(realInt(1), realInt(1), realInt(1), realInt(1))];
     [right addTarget:self action:@selector(rightClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:right];
     
     UIButton *play = [UIButton buttonWithType:UIButtonTypeCustom];
-    play.frame = CGRectMake(xy+btnWidth, btnTop, btnWidth, btnWidth);
+    play.frame = CGRectMake(xy+btnWidth-realInt(1), btnTop, btnWidth-realInt(2), btnWidth-realInt(2));
     [play setImage:[UIImage imageNamed:@"zzplay"] forState:UIControlStateNormal];
     [play setImage:[UIImage imageNamed:@"zzpause"] forState:UIControlStateSelected];
     [play addTarget:self action:@selector(playClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:play];
     
     UIButton *down = [UIButton buttonWithType:UIButtonTypeCustom];
-    down.frame = CGRectMake(xy+btnWidth, btnTop+btnWidth, btnWidth, btnWidth);
+    down.frame = CGRectMake(xy+btnWidth-realInt(2), btnTop+btnWidth-realInt(1), btnWidth, btnWidth-realInt(1));
     [down setImage:[UIImage imageNamed:@"zzdown"] forState:UIControlStateNormal];
+    [down setImageEdgeInsets:UIEdgeInsetsMake(0, realInt(1), realInt(1), realInt(1))];
     [down addTarget:self action:@selector(downClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:down];
+
+    UIButton *reversal = [UIButton buttonWithType:UIButtonTypeCustom];
+    reversal.frame = CGRectMake(xy+2*btnWidth, btnTop+realInt(3), btnWidth, btnWidth);
+    [reversal setImage:[UIImage imageNamed:@"zzreversal"] forState:UIControlStateNormal];
+    [reversal setImageEdgeInsets:UIEdgeInsetsMake(-realInt(1), -realInt(1), -realInt(1), -realInt(1))];
+    [reversal addTarget:self action:@selector(reversalClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:reversal];
 
     UIButton *restart = [UIButton buttonWithType:UIButtonTypeCustom];
     restart.frame = CGRectMake(self.board.right+(xy-realInt(3))/2.0, self.board.top-realInt(3), realInt(3), realInt(3));
@@ -109,6 +119,7 @@
     rapidPlus.layer.borderWidth = 0.5;
     rapidPlus.layer.borderColor = [UIColor redColor].CGColor;
     rapidPlus.backgroundColor = [UIColor lightGrayColor];
+    [rapidPlus.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0]];
     [rapidPlus setTitle:@"+" forState:UIControlStateNormal];
     [rapidPlus addTarget:self action:@selector(rapidPlusClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rapidPlus];
@@ -118,15 +129,10 @@
     rapidMinus.layer.borderWidth = 0.5;
     rapidMinus.layer.borderColor = [UIColor redColor].CGColor;
     rapidMinus.backgroundColor = [UIColor lightGrayColor];
+    [rapidMinus.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0]];
     [rapidMinus setTitle:@"-" forState:UIControlStateNormal];
     [rapidMinus addTarget:self action:@selector(rapidMinusClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rapidMinus];
-
-    UIButton *reversal = [UIButton buttonWithType:UIButtonTypeCustom];
-    reversal.frame = CGRectMake(xy+3*btnWidth, btnTop, btnWidth*2, btnWidth*2);
-    [reversal setImage:[UIImage imageNamed:@"zzreversal"] forState:UIControlStateNormal];
-    [reversal addTarget:self action:@selector(reversalClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:reversal];
     
     UIView *nextBricksBg = [[UIView alloc] initWithFrame:CGRectMake(self.board.right+(xy-realInt(4))/2.0, self.board.bottom-realInt(4), realInt(4), realInt(4))];
     nextBricksBg.layer.borderColor = [UIColor redColor].CGColor;
@@ -151,7 +157,7 @@
     next.text = @"Next";
     next.textAlignment = NSTextAlignmentCenter;
     next.textColor = [UIColor randomColor];
-    next.font = [UIFont boldSystemFontOfSize:20.0];
+    next.font = [UIFont boldSystemFontOfSize:15.0];
     [self.view addSubview:next];
     
     self.board.rapidPlusBlock = ^(NSInteger rapidLevel) {
@@ -178,11 +184,26 @@
             }];
         }];
     };
+    __weak typeof(self) weakSelf = self;
     self.board.gameOverBlock = ^{
         play.selected = NO;
         play.userInteractionEnabled = NO;
+        UIAlertAction *alert = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *alertRestart = [UIAlertAction actionWithTitle:@"Restart" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [weakSelf restartClick];
+        }];
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Game Over" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertVC addAction:alert];
+        [alertVC addAction:alertRestart];
+        [weakSelf presentViewController:alertVC animated:YES completion:nil];
     };
     self.board.restartBlock = ^{
+        totalScore = 0;
+        [UIView animateWithDuration:0.01 animations:^{
+            score.text = [NSString stringWithFormat:@"%zd", totalScore];
+        }];
         play.selected = NO;
         play.userInteractionEnabled = YES;
         [nextBricks.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
