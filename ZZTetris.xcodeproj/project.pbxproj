@@ -13,6 +13,10 @@
 		547E957B21AD49D1002AAA38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547E957A21AD49D1002AAA38 /* Assets.xcassets */; };
 		547E957E21AD49D1002AAA38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547E957C21AD49D1002AAA38 /* LaunchScreen.storyboard */; };
 		547E958121AD49D1002AAA38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E958021AD49D1002AAA38 /* main.m */; };
+		547E958821AD49EB002AAA38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 547E958721AD49EB002AAA38 /* README.md */; };
+		547E959221AD4B86002AAA38 /* ZZBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E959121AD4B86002AAA38 /* ZZBrick.m */; };
+		547E95AF21AFB8AC002AAA38 /* ZZTetrisBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E95AE21AFB8AC002AAA38 /* ZZTetrisBoard.m */; };
+		547E95B521AFB990002AAA38 /* ZZBrickConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E95B421AFB990002AAA38 /* ZZBrickConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,14 @@
 		547E957D21AD49D1002AAA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		547E957F21AD49D1002AAA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		547E958021AD49D1002AAA38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		547E958721AD49EB002AAA38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		547E959021AD4B86002AAA38 /* ZZBrick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZBrick.h; sourceTree = "<group>"; };
+		547E959121AD4B86002AAA38 /* ZZBrick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZBrick.m; sourceTree = "<group>"; };
+		547E959D21AD6B12002AAA38 /* ZZTetrisDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTetrisDefine.h; sourceTree = "<group>"; };
+		547E95AD21AFB8AC002AAA38 /* ZZTetrisBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTetrisBoard.h; sourceTree = "<group>"; };
+		547E95AE21AFB8AC002AAA38 /* ZZTetrisBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTetrisBoard.m; sourceTree = "<group>"; };
+		547E95B321AFB990002AAA38 /* ZZBrickConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZBrickConfig.h; sourceTree = "<group>"; };
+		547E95B421AFB990002AAA38 /* ZZBrickConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZBrickConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 		547E957021AD49CF002AAA38 /* ZZTetris */ = {
 			isa = PBXGroup;
 			children = (
+				547E958C21AD4B2D002AAA38 /* Core */,
 				547E957121AD49CF002AAA38 /* AppDelegate.h */,
 				547E957221AD49CF002AAA38 /* AppDelegate.m */,
 				547E957421AD49CF002AAA38 /* ViewController.h */,
@@ -67,8 +80,23 @@
 				547E957C21AD49D1002AAA38 /* LaunchScreen.storyboard */,
 				547E957F21AD49D1002AAA38 /* Info.plist */,
 				547E958021AD49D1002AAA38 /* main.m */,
+				547E958721AD49EB002AAA38 /* README.md */,
 			);
 			path = ZZTetris;
+			sourceTree = "<group>";
+		};
+		547E958C21AD4B2D002AAA38 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				547E959D21AD6B12002AAA38 /* ZZTetrisDefine.h */,
+				547E95AD21AFB8AC002AAA38 /* ZZTetrisBoard.h */,
+				547E95AE21AFB8AC002AAA38 /* ZZTetrisBoard.m */,
+				547E95B321AFB990002AAA38 /* ZZBrickConfig.h */,
+				547E95B421AFB990002AAA38 /* ZZBrickConfig.m */,
+				547E959021AD4B86002AAA38 /* ZZBrick.h */,
+				547E959121AD4B86002AAA38 /* ZZBrick.m */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +158,7 @@
 			files = (
 				547E957E21AD49D1002AAA38 /* LaunchScreen.storyboard in Resources */,
 				547E957B21AD49D1002AAA38 /* Assets.xcassets in Resources */,
+				547E958821AD49EB002AAA38 /* README.md in Resources */,
 				547E957921AD49CF002AAA38 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,8 +170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547E959221AD4B86002AAA38 /* ZZBrick.m in Sources */,
 				547E957621AD49CF002AAA38 /* ViewController.m in Sources */,
+				547E95B521AFB990002AAA38 /* ZZBrickConfig.m in Sources */,
 				547E958121AD49D1002AAA38 /* main.m in Sources */,
+				547E95AF21AFB8AC002AAA38 /* ZZTetrisBoard.m in Sources */,
 				547E957321AD49CF002AAA38 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,14 +315,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TQG5LT2E9L;
 				INFOPLIST_FILE = ZZTetris/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.360buy.ZZTetris;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JumpX.ZZTetris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b516c36b-c47a-4523-b16c-f29123d57513";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -299,14 +336,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TQG5LT2E9L;
 				INFOPLIST_FILE = ZZTetris/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.360buy.ZZTetris;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JumpX.ZZTetris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b516c36b-c47a-4523-b16c-f29123d57513";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
