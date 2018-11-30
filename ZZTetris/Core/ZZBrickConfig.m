@@ -32,14 +32,17 @@
         self.brickPoints = brickPoints;
         self.brickType = type;
         self.brickColor = [self brickColors][arc4random()%4];
-        self.borderColor = [UIColor whiteColor];
+        self.borderColor = [UIColor colorWithWhite:1.0 alpha:0.6];
     }
     return self;
 }
 
 - (NSArray *)brickColors
 {
-    return @[[UIColor redColor],[UIColor yellowColor],[UIColor blueColor],[UIColor greenColor]];
+    return @[[UIColor colorWithHex:@"#dd7e6b"],
+             [UIColor colorWithHex:@"#f6b26b"],
+             [UIColor colorWithHex:@"#3d85c6"],
+             [UIColor colorWithHex:@"#6aa84f"]];
 }
 
 - (NSInteger)getHeightWithPoints:(NSArray<ZZPoint *> *)brickPoints

@@ -15,7 +15,7 @@
     if (self = [super initWithFrame:frame]) {
         self.point = point;
         self.backgroundColor = backgroundColor;
-        self.layer.borderWidth = 1.0;
+        self.layer.borderWidth = 0.5;
         self.layer.borderColor = borderColor.CGColor;
     }
     return self;

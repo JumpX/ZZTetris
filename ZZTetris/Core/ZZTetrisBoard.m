@@ -31,13 +31,13 @@ static NSInteger rapidLevel;
 {
     if (self = [super initWithFrame:frame]) {
         self.clipsToBounds = YES;
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = [UIColor colorWithHex:@"#cce8cf"];
         self.layer.borderColor = [UIColor redColor].CGColor;
         self.layer.borderWidth = 0.5;
         for (NSInteger x = 0; x < BoardWidth; x ++) {
             for (NSInteger y = 0; y < BoardHeight; y ++) {
                 UIView *grid = [UIView new];
-                grid.backgroundColor = [UIColor lightGrayColor];
+                grid.backgroundColor = [UIColor colorWithHex:@"#cce8cf"];
                 grid.layer.borderWidth = 0.5;
                 grid.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
                 grid.frame = CGRectMake(realInt(x), realInt(y), realInt(1), realInt(1));
@@ -51,7 +51,6 @@ static NSInteger rapidLevel;
         self.realSet = [NSMutableSet set];
         self.tempSet = [NSMutableArray new];
         self.nextSet = [NSMutableArray new];
-        [self createTimer];
     }
     return self;
 }
@@ -387,6 +386,7 @@ static NSInteger rapidLevel;
     if (self.isGameOver) return;
     self.isPlaying = isPlaying;
     if (isPlaying) {
+        [self createTimer];
         [self dispatchResumeTimer];
     } else {
         [self dispatchSuspendTimer];
