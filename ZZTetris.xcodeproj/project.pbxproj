@@ -13,7 +13,6 @@
 		547E957B21AD49D1002AAA38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547E957A21AD49D1002AAA38 /* Assets.xcassets */; };
 		547E957E21AD49D1002AAA38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547E957C21AD49D1002AAA38 /* LaunchScreen.storyboard */; };
 		547E958121AD49D1002AAA38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E958021AD49D1002AAA38 /* main.m */; };
-		547E958821AD49EB002AAA38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 547E958721AD49EB002AAA38 /* README.md */; };
 		547E959221AD4B86002AAA38 /* ZZBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E959121AD4B86002AAA38 /* ZZBrick.m */; };
 		547E95AF21AFB8AC002AAA38 /* ZZTetrisBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E95AE21AFB8AC002AAA38 /* ZZTetrisBoard.m */; };
 		547E95B521AFB990002AAA38 /* ZZBrickConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 547E95B421AFB990002AAA38 /* ZZBrickConfig.m */; };
@@ -30,7 +29,6 @@
 		547E957D21AD49D1002AAA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		547E957F21AD49D1002AAA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		547E958021AD49D1002AAA38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		547E958721AD49EB002AAA38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		547E959021AD4B86002AAA38 /* ZZBrick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZBrick.h; sourceTree = "<group>"; };
 		547E959121AD4B86002AAA38 /* ZZBrick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZBrick.m; sourceTree = "<group>"; };
 		547E959D21AD6B12002AAA38 /* ZZTetrisDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTetrisDefine.h; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				547E957C21AD49D1002AAA38 /* LaunchScreen.storyboard */,
 				547E957F21AD49D1002AAA38 /* Info.plist */,
 				547E958021AD49D1002AAA38 /* main.m */,
-				547E958721AD49EB002AAA38 /* README.md */,
 			);
 			path = ZZTetris;
 			sourceTree = "<group>";
@@ -158,7 +155,6 @@
 			files = (
 				547E957E21AD49D1002AAA38 /* LaunchScreen.storyboard in Resources */,
 				547E957B21AD49D1002AAA38 /* Assets.xcassets in Resources */,
-				547E958821AD49EB002AAA38 /* README.md in Resources */,
 				547E957921AD49CF002AAA38 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
